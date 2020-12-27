@@ -1,0 +1,12 @@
+{
+  "name": "com.wuhuan.internalsvisibledemo",
+  "displayName": "InternalsVisibleDemo",
+  "version": "1.0.0",
+  "unity": "2018.4",
+  "description": "internalsvisibledemo.",
+  "keywords": [
+    "internalsvisibledemo"
+  ],
+  "category": "Editor",
+  "dependencies": {}
+}

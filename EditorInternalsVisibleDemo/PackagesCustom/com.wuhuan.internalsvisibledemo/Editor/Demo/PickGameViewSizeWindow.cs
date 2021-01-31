@@ -42,7 +42,6 @@ public class PickGameViewSizeWindow : EditorWindow, IHasCustomMenu
             if (GUI.Button(rect, viewSize.displayText, EditorStyles.toolbarButton))
             {
                 GameView.GetMainGameView().SizeSelectionCallback(i, viewSize);
-                GameView.GetMainGameView().Repaint();
             }
         }
     }
@@ -66,20 +65,21 @@ public class PickGameViewSizeWindow : EditorWindow, IHasCustomMenu
         };
         foreach (var item in list)
         {
+            int i;
             int count = currentGroup.GetTotalCount();
-            for (int i = currentGroup.GetBuiltinCount(); i < count; i++)
+            for (i = currentGroup.GetBuiltinCount(); i < count; i++)
             {
                 var viewSize = currentGroup.GetGameViewSize(i);
                 if (viewSize.width == item.width && viewSize.height == item.height)
                 {
                     break;
                 }
+            }
 
-                if (i == count - 1)
-                {
-                    currentGroup.AddCustomSize(item);
-                    GameViewSizes.instance.SaveToHDD();
-                }
+            if (i == count)
+            {
+                currentGroup.AddCustomSize(item);
+                GameViewSizes.instance.SaveToHDD();
             }
         }
     }
